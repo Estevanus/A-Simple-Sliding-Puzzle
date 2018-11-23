@@ -81,8 +81,7 @@ def initialize(cont):
 		
 	del var.blockList[0]["block"]
 	var.status = "ready"
-	
-	
+
 # ------------------------------------- Player Controller -------------------------------------
 def MoveBlock(cont):
 	own = cont.owner
@@ -110,4 +109,19 @@ def MoveBlock(cont):
 		own.scene.suspend()
 # ---------------------------------------------------------------------------------------------
 
+def setBahasa(cont):
+	own = cont.owner
+	aktif = True
+	for sen in cont.sensors:
+		if sen.positive == False:
+			aktif = False
+			
+	if aktif:
+		var.bahasa = own['bahasa']
+		own.scene.replace("inGame")
+
+def translate(cont):
+	own = cont.owner
+	if var.bahasa == 1:
+		own.text = var.terjemahan[own['identifikasi']]
 	
